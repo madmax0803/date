@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Dates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 414px) {
+            /* Styles for iPhone 11 */
+            .container {
+                max-width: 100%;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Select Dates</h1>
+    </header>
+    <div class="container">
+        <div class="content">
+            <p>Please select two different dates between October 18 and October 23:</p>
+            <form id="dateForm">
+                <label for="date1">Date 1:</label>
+                <select id="date1" name="date1">
+                    <option value="18">18th October</option>
+                    <option value="19">19th October</option>
+                    <option value="20">20th October</option>
+                    <option value="21">21st October</option>
+                    <option value="22">22nd October</option>
+                    <option value="23">23rd October</option>
+                </select>
+                <br>
+                <label for="date2">Date 2:</label>
+                <select id="date2" name="date2">
+                    <option value="18">18th October</option>
+                    <option value="19">19th October</option>
+                    <option value="20">20th October</option>
+                    <option value="21">21st October</option>
+                    <option value="22">22nd October</option>
+                    <option value="23">23rd October</option>
+                </select>
+                <br>
+                <button type="submit" id="submitButton">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const dateForm = document.getElementById("dateForm");
+
+        dateForm.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the form from actually submitting and reloading the page
+
+            const selectedDate1 = dateForm.date1.value;
+            const selectedDate2 = dateForm.date2.value;
+
+            if (selectedDate1 !== selectedDate2) {
+                // Construct the URL for the next page (page3.html) with selected dates as parameters
+                const url = `page3.html?date1=${selectedDate1}&date2=${selectedDate2}`;
+                window.location.href = url;
+            } else {
+                alert("Please select two different dates.");
+            }
+        });
+    </script>
+</body>
+</html>
